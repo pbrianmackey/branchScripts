@@ -33,8 +33,16 @@ deleteOldBranchLocal="git branch -D rc"
 resetUpstream="git push -u origin $newrcName"
 
 ${getRename}
-${deleteOldBranchRemote}
-${deleteOldBranchLocal}
+# $? contains the exit code of the preceding echo
+BRANCH_EXIT_CODE=$?
+if [ $BRANCH_EXIT_CODE -eq 0 ];
+  then
+    ${deleteOldBranchRemote}
+    ${deleteOldBranchLocal}
+  else
+    echo "Skipping rc cleanup.  Error during git rename.  exit code was $BRANCH_EXIT_CODE"
+fi
+
 ${resetUpstream}
 
 #######2 create the new branch#######
