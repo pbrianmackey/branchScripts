@@ -26,7 +26,7 @@ newrcName="rc$Now_hourly"
 
 #rename rc to the new name
 getRename="git branch -m $newrcName"
-#Delete the old-name remote branch
+#Delete the old remote rc branch
 deleteOldBranchRemote="git push origin --delete rc"
 deleteOldBranchLocal="git branch -D rc"
 #Reset the upstream branch for the new-name local branch.
