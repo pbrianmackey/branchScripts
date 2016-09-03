@@ -1,11 +1,14 @@
 ##Testing##
 if [ $1 ]
   then
+    #test assumes rc branch does not exist.  It creates a new rc branch
 	echo "Test mode enabled."
   goToMaster="git checkout master"
   createRc="git checkout -b rc"
+  pushRcRemote="git push -u origin rc"
   ${goToMaster}
   ${createRc}
+  ${pushRcRemote}
 fi
 
 #######1 rename the old rc branch#####
@@ -23,13 +26,15 @@ newrcName="rc$Now_hourly"
 
 #rename rc to the new name
 getRename="git branch -m $newrcName"
-#Delete the old-name remote branch and push the new-name local branch.
-deleteOldBranch="git push origin :rc $newrcName"
+#Delete the old-name remote branch
+deleteOldBranchRemote="git push origin --delete rc"
+deleteOldBranchLocal="git branch -D rc"
 #Reset the upstream branch for the new-name local branch.
 resetUpstream="git push -u origin $newrcName"
 
 ${getRename}
-${deleteOldBranch}
+${deleteOldBranchRemote}
+${deleteOldBranchLocal}
 ${resetUpstream}
 
 #######2 create the new branch#######
