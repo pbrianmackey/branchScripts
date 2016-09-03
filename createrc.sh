@@ -1,3 +1,13 @@
+##Testing##
+if [ $1 ]
+  then
+	echo "Test mode enabled."
+  goToMaster="git checkout master"
+  createRc="git checkout -b rc"
+  ${goToMaster}
+  ${createRc}
+fi
+
 #######1 rename the old rc branch#####
 getCo="git checkout rc"
 getLatest="git pull"
