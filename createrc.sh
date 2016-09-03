@@ -2,6 +2,7 @@
 # createrc.sh:  This script assumes you create a new rc branch with every release.
 # Long living branches are evil.  This script creates a fresh rc branch based off of master.
 # The intention is to run this script with each new release
+# The script runs in 2 steps.
 # Step 1 will delete rename the current rc branch to rcDATE_STAMP
 # Step 1 will then delete current rc from local and remote
 # Step 1 will skip the delete process in the case where rename rc fails
