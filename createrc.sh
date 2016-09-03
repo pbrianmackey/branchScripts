@@ -32,7 +32,7 @@ ${gitCo}
 ${getLatest}
 
 #get todays date for use with renaming rc
-Now_hourly=$(date +%d%b%H%M)
+Now_hourly=$(date +%d%b%Y%H%M)
 #echo "$Now_hourly"
 
 newrcName="rc$Now_hourly"
